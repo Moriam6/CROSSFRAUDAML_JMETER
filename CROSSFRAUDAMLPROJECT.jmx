@@ -1,0 +1,1633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="CrossFraudAMLProject" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">accept</stringProp>
+            <stringProp name="Header.value">*/*</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">client_id</stringProp>
+            <stringProp name="Header.value">250</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Content-Type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="NameScreeningAPI" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">crossfraud.fcmb-azr-msase.p.azurewebsites.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NameScreening(OFAClist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;02880022&quot;,&#xd;
+  &quot;customerId&quot;: &quot;2336120&quot;,&#xd;
+  &quot;firstName&quot;: &quot;DE FRANCE&quot;,&#xd;
+  &quot;middleName&quot;: &quot;&quot;,&#xd;
+  &quot;lastName&quot;: &quot;Naomi A&quot;,&#xd;
+  &quot;dateOfBirth&quot;: &quot;11-09-1940 00:00:00&quot;,&#xd;
+  &quot;productCode&quot;: &quot;14&quot;,&#xd;
+  &quot;passportInfo&quot;: {&#xd;
+    &quot;passportNumber&quot;: &quot;&quot;,&#xd;
+    &quot;issuingCountry&quot;: &quot;&quot;,&#xd;
+    &quot;expiryDate&quot;: &quot;&quot;&#xd;
+  },&#xd;
+  &quot;address&quot;: {&#xd;
+    &quot;address_Type&quot;: {&#xd;
+      &quot;address1&quot;: &quot;20 LONGE STREET&quot;,&#xd;
+      &quot;address2&quot;: &quot;LAGOS&quot;,&#xd;
+      &quot;address3&quot;: &quot;&quot;,&#xd;
+      &quot;city&quot;: &quot;LAG&quot;,&#xd;
+      &quot;state&quot;: &quot;LG&quot;,&#xd;
+      &quot;country&quot;: &quot;NG&quot;,&#xd;
+      &quot;zipcode&quot;: &quot;&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;otherIdentificationInfo&quot;: {&#xd;
+    &quot;identificationType&quot;: &quot;&quot;,&#xd;
+    &quot;identificationNumber&quot;: &quot;&quot;&#xd;
+  }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Namescreening/Screening</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NameScreening(EUlist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;02880022&quot;,&#xd;
+  &quot;customerId&quot;: &quot;2336120&quot;,&#xd;
+  &quot;firstName&quot;: &quot;Saddam&quot;,&#xd;
+  &quot;middleName&quot;: &quot;Uday&quot;,&#xd;
+  &quot;lastName&quot;: &quot;Hussein Al-Tikriti&quot;,&#xd;
+  &quot;dateOfBirth&quot;: &quot;01-01-1970 00:00:00&quot;,&#xd;
+  &quot;productCode&quot;: &quot;14&quot;,&#xd;
+  &quot;passportInfo&quot;: {&#xd;
+    &quot;passportNumber&quot;: &quot;&quot;,&#xd;
+    &quot;issuingCountry&quot;: &quot;&quot;,&#xd;
+    &quot;expiryDate&quot;: &quot;&quot;&#xd;
+  },&#xd;
+  &quot;address&quot;: {&#xd;
+    &quot;address_Type&quot;: {&#xd;
+      &quot;address1&quot;: &quot;20 LONGE STREET&quot;,&#xd;
+      &quot;address2&quot;: &quot;LAGOS&quot;,&#xd;
+      &quot;address3&quot;: &quot;&quot;,&#xd;
+      &quot;city&quot;: &quot;LAG&quot;,&#xd;
+      &quot;state&quot;: &quot;LG&quot;,&#xd;
+      &quot;country&quot;: &quot;NG&quot;,&#xd;
+      &quot;zipcode&quot;: &quot;&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;otherIdentificationInfo&quot;: {&#xd;
+    &quot;identificationType&quot;: &quot;&quot;,&#xd;
+    &quot;identificationNumber&quot;: &quot;&quot;&#xd;
+  }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Namescreening/Screening</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NameScreening(PEPsList)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;12330000&quot;,&#xd;
+  &quot;customerId&quot;: &quot;2336120&quot;,&#xd;
+  &quot;firstName&quot;: &quot;Osinbajo&quot;,&#xd;
+  &quot;middleName&quot;: &quot;&quot;,&#xd;
+  &quot;lastName&quot;: &quot;YEMI&quot;,&#xd;
+  &quot;dateOfBirth&quot;: &quot;10-09-1980 00:00:00&quot;,&#xd;
+  &quot;productCode&quot;: &quot;14&quot;,&#xd;
+  &quot;passportInfo&quot;: {&#xd;
+    &quot;passportNumber&quot;: &quot;&quot;,&#xd;
+    &quot;issuingCountry&quot;: &quot;&quot;,&#xd;
+    &quot;expiryDate&quot;: &quot;&quot;&#xd;
+  },&#xd;
+  &quot;address&quot;: {&#xd;
+    &quot;address_Type&quot;: {&#xd;
+      &quot;address1&quot;: &quot;55 LONGE STREET&quot;,&#xd;
+      &quot;address2&quot;: &quot;LAGOS&quot;,&#xd;
+      &quot;address3&quot;: &quot;&quot;,&#xd;
+      &quot;city&quot;: &quot;LAG&quot;,&#xd;
+      &quot;state&quot;: &quot;LG&quot;,&#xd;
+      &quot;country&quot;: &quot;NG&quot;,&#xd;
+      &quot;zipcode&quot;: &quot;&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;otherIdentificationInfo&quot;: {&#xd;
+    &quot;identificationType&quot;: &quot;&quot;,&#xd;
+    &quot;identificationNumber&quot;: &quot;&quot;&#xd;
+  }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Namescreening/Screening</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NameScreening(UNlist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;12330000&quot;,&#xd;
+  &quot;customerId&quot;: &quot;2336120&quot;,&#xd;
+  &quot;firstName&quot;: &quot;Osinbajo&quot;,&#xd;
+  &quot;middleName&quot;: &quot;&quot;,&#xd;
+  &quot;lastName&quot;: &quot;YEMI&quot;,&#xd;
+  &quot;dateOfBirth&quot;: &quot;10-09-1980 00:00:00&quot;,&#xd;
+  &quot;productCode&quot;: &quot;14&quot;,&#xd;
+  &quot;passportInfo&quot;: {&#xd;
+    &quot;passportNumber&quot;: &quot;&quot;,&#xd;
+    &quot;issuingCountry&quot;: &quot;&quot;,&#xd;
+    &quot;expiryDate&quot;: &quot;&quot;&#xd;
+  },&#xd;
+  &quot;address&quot;: {&#xd;
+    &quot;address_Type&quot;: {&#xd;
+      &quot;address1&quot;: &quot;55 LONGE STREET&quot;,&#xd;
+      &quot;address2&quot;: &quot;LAGOS&quot;,&#xd;
+      &quot;address3&quot;: &quot;&quot;,&#xd;
+      &quot;city&quot;: &quot;LAG&quot;,&#xd;
+      &quot;state&quot;: &quot;LG&quot;,&#xd;
+      &quot;country&quot;: &quot;NG&quot;,&#xd;
+      &quot;zipcode&quot;: &quot;&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;otherIdentificationInfo&quot;: {&#xd;
+    &quot;identificationType&quot;: &quot;&quot;,&#xd;
+    &quot;identificationNumber&quot;: &quot;&quot;&#xd;
+  }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Namescreening/Screening</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="NameScreening(Unsanctioned)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;00010074&quot;,&#xd;
+  &quot;customerId&quot;: &quot;2336120&quot;,&#xd;
+  &quot;firstName&quot;: &quot;abidemi&quot;,&#xd;
+  &quot;middleName&quot;: &quot;MORIAM&quot;,&#xd;
+  &quot;lastName&quot;: &quot;ISAH&quot;,&#xd;
+  &quot;dateOfBirth&quot;: &quot;01-01-1987 00:00:00&quot;,&#xd;
+  &quot;productCode&quot;: &quot;14&quot;,&#xd;
+  &quot;passportInfo&quot;: {&#xd;
+    &quot;passportNumber&quot;: &quot;&quot;,&#xd;
+    &quot;issuingCountry&quot;: &quot;&quot;,&#xd;
+    &quot;expiryDate&quot;: &quot;&quot;&#xd;
+  },&#xd;
+  &quot;address&quot;: {&#xd;
+    &quot;address_Type&quot;: {&#xd;
+      &quot;address1&quot;: &quot;19 PIPELINE ROAD AKUTE&quot;,&#xd;
+      &quot;address2&quot;: &quot;LAGOS&quot;,&#xd;
+      &quot;address3&quot;: &quot;&quot;,&#xd;
+      &quot;city&quot;: &quot;LAG&quot;,&#xd;
+      &quot;state&quot;: &quot;LG&quot;,&#xd;
+      &quot;country&quot;: &quot;NG&quot;,&#xd;
+      &quot;zipcode&quot;: &quot;&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;otherIdentificationInfo&quot;: {&#xd;
+    &quot;identificationType&quot;: &quot;&quot;,&#xd;
+    &quot;identificationNumber&quot;: &quot;&quot;&#xd;
+  }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Namescreening/Screening</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="AccountOpening" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">accountmgtmcsvc.fcmb-azr-msase.p.azurewebsites.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateBaseRetailAccount(OFAClist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;requestId&quot;: &quot;12552220000&quot;,&#xd;
+&quot;mobileNo&quot;: &quot;08255522200&quot;,&#xd;
+&quot;nin&quot;: &quot;&quot;,&#xd;
+&quot;isWalletAccount&quot;: true,&#xd;
+&quot;brokerCode&quot;: &quot;E5261&quot;,&#xd;
+&quot;branchCode&quot;: &quot;001&quot;,&#xd;
+&quot;accountOfficerCode&quot;: &quot;004ZC&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;14&quot;&#xd;
+},&#xd;
+&quot;firstName&quot;: &quot;Alejandro Abood&quot;,&#xd;
+&quot;middleName&quot;: &quot;&quot;,&#xd;
+&quot;lastName&quot;: &quot;ANGELINI&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;MAMA&quot;,&#xd;
+&quot;dob&quot;: &quot;1990-10-14T11:55:11.870Z&quot;,&#xd;
+&quot;gender&quot;: &quot;F&quot;,&#xd;
+&quot;email&quot;: &quot;TESTING234222@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;55 ADEKUNBI STREET&quot;,&#xd;
+&quot;houseNum&quot;: &quot;55&quot;,&#xd;
+&quot;streetName&quot;: &quot;ADEKUNMBI&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;OTHR&quot;,&#xd;
+&quot;occupation&quot;: &quot;TRADE&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MRS&quot;,&#xd;
+&quot;image&quot;: &quot;NULL&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateBaseRetailAccount</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateBaseRetailAccount(EUlist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;requestId&quot;: &quot;43112220011&quot;,&#xd;
+&quot;mobileNo&quot;: &quot;08131000201&quot;,&#xd;
+&quot;nin&quot;: &quot;&quot;,&#xd;
+&quot;isWalletAccount&quot;: true,&#xd;
+&quot;brokerCode&quot;: &quot;E5261&quot;,&#xd;
+&quot;branchCode&quot;: &quot;001&quot;,&#xd;
+&quot;accountOfficerCode&quot;: &quot;004ZC&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;14&quot;&#xd;
+},&#xd;
+&quot;firstName&quot;: &quot;Qoussaï&quot;,&#xd;
+&quot;middleName&quot;: &quot;Hussein Al-Tikriti&quot;,&#xd;
+&quot;lastName&quot;: &quot;Saddam&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;MAMA&quot;,&#xd;
+&quot;dob&quot;: &quot;1940-11-10T11:55:11.870Z&quot;,&#xd;
+&quot;gender&quot;: &quot;F&quot;,&#xd;
+&quot;email&quot;: &quot;isahmariam31@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;55 MACARTHY STREET&quot;,&#xd;
+&quot;houseNum&quot;: &quot;55&quot;,&#xd;
+&quot;streetName&quot;: &quot;ADEKUNMBI&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;OTHR&quot;,&#xd;
+&quot;occupation&quot;: &quot;TRADE&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MRS&quot;,&#xd;
+&quot;image&quot;: &quot;NULL&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateBaseRetailAccount</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateBaseRetailAccount(PEPsList)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;requestId&quot;: &quot;430000020011&quot;,&#xd;
+&quot;mobileNo&quot;: &quot;08131000201&quot;,&#xd;
+&quot;nin&quot;: &quot;&quot;,&#xd;
+&quot;isWalletAccount&quot;: true,&#xd;
+&quot;brokerCode&quot;: &quot;E5261&quot;,&#xd;
+&quot;branchCode&quot;: &quot;001&quot;,&#xd;
+&quot;accountOfficerCode&quot;: &quot;004ZC&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;14&quot;&#xd;
+},&#xd;
+&quot;firstName&quot;: &quot;Mohammed&quot;,&#xd;
+&quot;middleName&quot;: &quot;Musa&quot;,&#xd;
+&quot;lastName&quot;: &quot;Bello&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;MIMI&quot;,&#xd;
+&quot;dob&quot;: &quot;1940-11-10T11:55:11.870Z&quot;,&#xd;
+&quot;gender&quot;: &quot;F&quot;,&#xd;
+&quot;email&quot;: &quot;isahmariam31@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;25 MACARTHY STREET&quot;,&#xd;
+&quot;houseNum&quot;: &quot;55&quot;,&#xd;
+&quot;streetName&quot;: &quot;ADEKUNMBI&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;OTHR&quot;,&#xd;
+&quot;occupation&quot;: &quot;TRADE&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MRS&quot;,&#xd;
+&quot;image&quot;: &quot;NULL&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateBaseRetailAccount</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateBaseRetailAccount(UNlist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;requestId&quot;: &quot;430000020011&quot;,&#xd;
+&quot;mobileNo&quot;: &quot;08131000201&quot;,&#xd;
+&quot;nin&quot;: &quot;&quot;,&#xd;
+&quot;isWalletAccount&quot;: true,&#xd;
+&quot;brokerCode&quot;: &quot;E5261&quot;,&#xd;
+&quot;branchCode&quot;: &quot;001&quot;,&#xd;
+&quot;accountOfficerCode&quot;: &quot;004ZC&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;14&quot;&#xd;
+},&#xd;
+&quot;firstName&quot;: &quot;MUN&quot;,&#xd;
+&quot;middleName&quot;: &quot;&quot;,&#xd;
+&quot;lastName&quot;: &quot;SAN&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;MIMI&quot;,&#xd;
+&quot;dob&quot;: &quot;1940-11-10T11:55:11.870Z&quot;,&#xd;
+&quot;gender&quot;: &quot;F&quot;,&#xd;
+&quot;email&quot;: &quot;isahmariam31@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;25 MACARTHY STREET&quot;,&#xd;
+&quot;houseNum&quot;: &quot;55&quot;,&#xd;
+&quot;streetName&quot;: &quot;ADEKUNMBI&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;OTHR&quot;,&#xd;
+&quot;occupation&quot;: &quot;TRADE&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MRS&quot;,&#xd;
+&quot;image&quot;: &quot;NULL&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateBaseRetailAccount</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateBaseRetailAccount(Unsanctioned)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;requestId&quot;: &quot;12442220000&quot;,&#xd;
+&quot;mobileNo&quot;: &quot;08255522200&quot;,&#xd;
+&quot;nin&quot;: &quot;&quot;,&#xd;
+&quot;isWalletAccount&quot;: true,&#xd;
+&quot;brokerCode&quot;: &quot;E5261&quot;,&#xd;
+&quot;branchCode&quot;: &quot;001&quot;,&#xd;
+&quot;accountOfficerCode&quot;: &quot;004ZC&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;14&quot;&#xd;
+},&#xd;
+&quot;firstName&quot;: &quot;masturah&quot;,&#xd;
+&quot;middleName&quot;: &quot;titi&quot;,&#xd;
+&quot;lastName&quot;: &quot;ojukutu&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;Mimi&quot;,&#xd;
+&quot;dob&quot;: &quot;1995-10-14T11:55:11.870Z&quot;,&#xd;
+&quot;gender&quot;: &quot;F&quot;,&#xd;
+&quot;email&quot;: &quot;TESTING234222@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;55 ADEKUNBI STREET&quot;,&#xd;
+&quot;houseNum&quot;: &quot;55&quot;,&#xd;
+&quot;streetName&quot;: &quot;ADEKUNMBI&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;OTHR&quot;,&#xd;
+&quot;occupation&quot;: &quot;TRADE&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MRS&quot;,&#xd;
+&quot;image&quot;: &quot;NULL&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateBaseRetailAccount</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+          <collectionProp name="Asserion.test_strings"/>
+          <stringProp name="Assertion.custom_message"></stringProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">true</boolProp>
+          <intProp name="Assertion.test_type">16</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="AccountOpening" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">accountmgtmcsvc.fcmb-azr-msase.p.azurewebsites.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateRetailAccountMiniData2(OFAClist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;firstName&quot;: &quot;Hector Mario&quot;,&#xd;
+&quot;middleName&quot;: &quot;&quot;,&#xd;
+&quot;lastName&quot;: &quot;CIFUENTES VILLA&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;test&quot;,&#xd;
+&quot;dob&quot;: &quot;1958-10-10T10:44:34.998Z&quot;,&#xd;
+&quot;gender&quot;: &quot;M&quot;,&#xd;
+&quot;bvnMobileNumber&quot;: &quot;08059923309&quot;,&#xd;
+&quot;preferredMobileNumber&quot;: &quot;08024935749&quot;,&#xd;
+&quot;email&quot;: &quot;TEST123@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;FCMB&quot;,&#xd;
+&quot;houseNum&quot;: &quot;90&quot;,&#xd;
+&quot;streetName&quot;: &quot;MORIAM&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;SNG&quot;,&#xd;
+&quot;occupation&quot;: &quot;CIVIL&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MR&quot;,&#xd;
+&quot;image&quot;: &quot;&quot;,&#xd;
+&quot;addImageFromBVN&quot;: true,&#xd;
+&quot;requestId&quot;: &quot;125554443&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;34&quot;&#xd;
+}&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateRetailAccountMiniData2</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateRetailAccountMiniData2(EUlist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;firstName&quot;: &quot;Essa&quot;,&#xd;
+&quot;middleName&quot;: &quot;Mohammad&quot;,&#xd;
+&quot;lastName&quot;: &quot;A&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;QA&quot;,&#xd;
+&quot;dob&quot;: &quot;1985-04-04T10:44:34.998Z&quot;,&#xd;
+&quot;gender&quot;: &quot;M&quot;,&#xd;
+&quot;bvnMobileNumber&quot;: &quot;08059923309&quot;,&#xd;
+&quot;preferredMobileNumber&quot;: &quot;08131000201&quot;,&#xd;
+&quot;email&quot;: &quot;TEST123@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;FCMB&quot;,&#xd;
+&quot;houseNum&quot;: &quot;90&quot;,&#xd;
+&quot;streetName&quot;: &quot;LADI&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;SNG&quot;,&#xd;
+&quot;occupation&quot;: &quot;CIVIL&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MR&quot;,&#xd;
+&quot;image&quot;: &quot;&quot;,&#xd;
+&quot;addImageFromBVN&quot;: true,&#xd;
+&quot;requestId&quot;: &quot;22555111&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;34&quot;&#xd;
+}&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateRetailAccountMiniData2</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateRetailAccountMiniData2(PEPsList)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;firstName&quot;: &quot;Fayemi&quot;,&#xd;
+&quot;middleName&quot;: &quot;Kayode&quot;,&#xd;
+&quot;lastName&quot;: &quot;John&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;test&quot;,&#xd;
+&quot;dob&quot;: &quot;1960-09-10T10:44:34.998Z&quot;,&#xd;
+&quot;gender&quot;: &quot;M&quot;,&#xd;
+&quot;bvnMobileNumber&quot;: &quot;08059923309&quot;,&#xd;
+&quot;preferredMobileNumber&quot;: &quot;08024935749&quot;,&#xd;
+&quot;email&quot;: &quot;TEST123@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;FCMB&quot;,&#xd;
+&quot;houseNum&quot;: &quot;190&quot;,&#xd;
+&quot;streetName&quot;: &quot;MORIAM&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;SNG&quot;,&#xd;
+&quot;occupation&quot;: &quot;CIVIL&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MR&quot;,&#xd;
+&quot;image&quot;: &quot;&quot;,&#xd;
+&quot;addImageFromBVN&quot;: true,&#xd;
+&quot;requestId&quot;: &quot;125554443&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;34&quot;&#xd;
+}&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateRetailAccountMiniData2</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateRetailAccountMiniData2(UNlist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;firstName&quot;: &quot;ABD&quot;,&#xd;
+&quot;middleName&quot;: &quot;AL-HOUTHI&quot;,&#xd;
+&quot;lastName&quot;: &quot;AL-KHALIQ&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;test&quot;,&#xd;
+&quot;dob&quot;: &quot;1960-09-10T10:44:34.998Z&quot;,&#xd;
+&quot;gender&quot;: &quot;M&quot;,&#xd;
+&quot;bvnMobileNumber&quot;: &quot;08059923309&quot;,&#xd;
+&quot;preferredMobileNumber&quot;: &quot;08024935749&quot;,&#xd;
+&quot;email&quot;: &quot;TEST123@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;FCMB&quot;,&#xd;
+&quot;houseNum&quot;: &quot;190&quot;,&#xd;
+&quot;streetName&quot;: &quot;MORIAM&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;SNG&quot;,&#xd;
+&quot;occupation&quot;: &quot;CIVIL&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MR&quot;,&#xd;
+&quot;image&quot;: &quot;&quot;,&#xd;
+&quot;addImageFromBVN&quot;: true,&#xd;
+&quot;requestId&quot;: &quot;125554443&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;34&quot;&#xd;
+}&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateRetailAccountMiniData2</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateRetailAccountMiniData2(Unsanctioned)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;firstName&quot;: &quot;isah&quot;,&#xd;
+&quot;middleName&quot;: &quot;Taye&quot;,&#xd;
+&quot;lastName&quot;: &quot;taiwo&quot;,&#xd;
+&quot;motherMaidenName&quot;: &quot;adijat&quot;,&#xd;
+&quot;dob&quot;: &quot;1990-09-10T10:44:34.998Z&quot;,&#xd;
+&quot;gender&quot;: &quot;M&quot;,&#xd;
+&quot;bvnMobileNumber&quot;: &quot;08059923309&quot;,&#xd;
+&quot;preferredMobileNumber&quot;: &quot;08024935749&quot;,&#xd;
+&quot;email&quot;: &quot;TEST123@YAHOO.COM&quot;,&#xd;
+&quot;address&quot;: {&#xd;
+&quot;addrLine1&quot;: &quot;FCMB&quot;,&#xd;
+&quot;houseNum&quot;: &quot;190&quot;,&#xd;
+&quot;streetName&quot;: &quot;lasgidi&quot;,&#xd;
+&quot;city&quot;: &quot;LAG&quot;,&#xd;
+&quot;state&quot;: &quot;LG&quot;,&#xd;
+&quot;country&quot;: &quot;NG&quot;&#xd;
+},&#xd;
+&quot;bvn&quot;: &quot;&quot;,&#xd;
+&quot;maritalStatus&quot;: &quot;SNG&quot;,&#xd;
+&quot;occupation&quot;: &quot;CIVIL&quot;,&#xd;
+&quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+&quot;salutation&quot;: &quot;MRS&quot;,&#xd;
+&quot;image&quot;: &quot;&quot;,&#xd;
+&quot;addImageFromBVN&quot;: true,&#xd;
+&quot;requestId&quot;: &quot;120034443&quot;,&#xd;
+&quot;configCredentials&quot;: {&#xd;
+&quot;clientId&quot;: &quot;250&quot;,&#xd;
+&quot;productId&quot;: &quot;34&quot;&#xd;
+}&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Accounts/v1/CreateRetailAccountMiniData2</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+          <collectionProp name="Asserion.test_strings"/>
+          <stringProp name="Assertion.custom_message"></stringProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">true</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="FATCA" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">accountmgtmcsvc.fcmb-azr-msase.p.azurewebsites.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ModifyRetailCustomerDemographic(US)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;1243305&quot;,&#xd;
+  &quot;custId&quot;: &quot;7707439&quot;,&#xd;
+  &quot;countryOfIssue&quot;: &quot;NG&quot;,&#xd;
+  &quot;type&quot;: &quot;D&quot;,&#xd;
+  &quot;donotCallFlag&quot;: &quot;N&quot;,&#xd;
+  &quot;donotMailFlag&quot;: &quot;N&quot;,&#xd;
+  &quot;donotSendEmailFlag&quot;: &quot;N&quot;,&#xd;
+  &quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+  &quot;maritalStatus&quot;: &quot;SNG&quot;,&#xd;
+  &quot;nationality&quot;: &quot;US&quot;,&#xd;
+  &quot;residenceCountry&quot;: &quot;NG&quot;,&#xd;
+  &quot;fatca&quot;: {&#xd;
+    &quot;lastForeignTaxReviewDate&quot;: &quot;2021-03-10T10:00:50.383&quot;,&#xd;
+    &quot;nextForeignTaxReviewDate&quot;: &quot;2023-02-01T00:00:00.000&quot;,&#xd;
+    &quot;fatcaRemarks&quot;: &quot;string&quot;,&#xd;
+    &quot;foreignTaxReportingStatus&quot;: &quot;ACTIVE&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Customer/v1/ModifyRetailCustomerDemographic</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ModifyRetailCustomerDemographic(NG)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;requestId&quot;: &quot;1243305&quot;,&#xd;
+  &quot;custId&quot;: &quot;7707254&quot;,&#xd;
+  &quot;countryOfIssue&quot;: &quot;NG&quot;,&#xd;
+  &quot;type&quot;: &quot;D&quot;,&#xd;
+  &quot;donotCallFlag&quot;: &quot;N&quot;,&#xd;
+  &quot;donotMailFlag&quot;: &quot;N&quot;,&#xd;
+  &quot;donotSendEmailFlag&quot;: &quot;N&quot;,&#xd;
+  &quot;employmentStatus&quot;: &quot;OTHER&quot;,&#xd;
+  &quot;maritalStatus&quot;: &quot;NG&quot;,&#xd;
+  &quot;nationality&quot;: &quot;KK&quot;,&#xd;
+  &quot;residenceCountry&quot;: &quot;NG&quot;,&#xd;
+  &quot;fatca&quot;: {&#xd;
+    &quot;lastForeignTaxReviewDate&quot;: &quot;2021-11-10T10:00:50.383&quot;,&#xd;
+    &quot;nextForeignTaxReviewDate&quot;: &quot;2023-02-01T00:00:00.000&quot;,&#xd;
+    &quot;fatcaRemarks&quot;: &quot;string&quot;,&#xd;
+    &quot;foreignTaxReportingStatus&quot;: &quot;ACTIVE&quot;&#xd;
+  }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/Customer/v1/ModifyRetailCustomerDemographic</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+          <collectionProp name="Asserion.test_strings"/>
+          <stringProp name="Assertion.custom_message"></stringProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">true</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="OnlineAccountOpeningAPI" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">10.50.58.55/onlineaccountopeningservice</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AccountOpening/CreateAccount(OFAClist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;AppId&quot;: &quot;12345&quot;,&#xd;
+  &quot;AppKey&quot;: &quot;123456&quot;,&#xd;
+  &quot;ReferenceNo&quot;: 0,&#xd;
+  &quot;BVNNumber&quot;: &quot;21399170249&quot;,&#xd;
+  &quot;PreferredBranch&quot;: &quot;001&quot;,&#xd;
+  &quot;FirstName&quot;: &quot;Juan M. de la&quot;,&#xd;
+  &quot;MiddleName&quot;: &quot;&quot;,&#xd;
+  &quot;LastName&quot;: &quot;CRUZ&quot;,&#xd;
+  &quot;MaritalStatus&quot;: &quot;Single&quot;,&#xd;
+  &quot;DateOfBirth&quot;: &quot;1944-10-06T00:00:00&quot;,&#xd;
+  &quot;DateOfBirth2&quot;: &quot;string&quot;,&#xd;
+  &quot;Email&quot;: &quot;isahmariam31@yahoo.com&quot;,&#xd;
+  &quot;Gender&quot;: &quot;Female&quot;,&#xd;
+  &quot;PhoneNumber&quot;: &quot;08024935749&quot;,&#xd;
+  &quot;MotherMaidenName&quot;: &quot;string&quot;,&#xd;
+  &quot;NextOfKin&quot;: &quot;string&quot;,&#xd;
+  &quot;Nationality&quot;: &quot;Nigeria&quot;,&#xd;
+  &quot;Complete&quot;: &quot;Yes&quot;,&#xd;
+  &quot;Title&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeTitle&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCountry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCity&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMaritalStatus&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeEmail&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr1&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr2&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCntry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeDob&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeFname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeLname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteePhoneNo&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeState&quot;: &quot;string&quot;,&#xd;
+  &quot;City&quot;: &quot;string&quot;,&#xd;
+  &quot;State&quot;: &quot;string&quot;,&#xd;
+  &quot;CifId&quot;: &quot;string&quot;,&#xd;
+  &quot;SchemeCode&quot;: &quot;SB131&quot;,&#xd;
+  &quot;AccountType&quot;: &quot;string&quot;,&#xd;
+  &quot;Channel_Id&quot;: &quot;RIB01&quot;,&#xd;
+  &quot;Ref_Code&quot;: &quot;string&quot;,&#xd;
+  &quot;BirthCert&quot;: &quot;string&quot;,&#xd;
+  &quot;CountryCode&quot;:&quot;234&quot;,&#xd;
+  &quot;ParentPhoto&quot;: &quot;string&quot;,&#xd;
+  &quot;Photo&quot;: &quot;NA&quot;,&#xd;
+  &quot;Signature&quot;: &quot;NA&quot;,&#xd;
+  &quot;Id&quot;: 0,&#xd;
+  &quot;CreatedOn&quot;: &quot;2022-04-07T08:51:05.779Z&quot;,&#xd;
+  &quot;Resident&quot;:&quot;string&quot;,&#xd;
+  &quot;ResidentialAddress&quot;:&quot;string&quot;,&#xd;
+  &quot;StateOfOrigin&quot;:&quot;IKJ&quot;,&#xd;
+  &quot;StateOfResidence&quot;:&quot;LAG&quot;,&#xd;
+  &quot;LevelOfAccount&quot;:null,&#xd;
+  &quot;LgaOfOrigin&quot;:null,&#xd;
+  &quot;LgaOfResidence&quot;:null&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/AccountOpening/CreateAccount?value=123</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AccountOpening/CreateAccount(EUlist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;AppId&quot;: &quot;12345&quot;,&#xd;
+  &quot;AppKey&quot;: &quot;123456&quot;,&#xd;
+  &quot;ReferenceNo&quot;: 0,&#xd;
+  &quot;BVNNumber&quot;: &quot;21399170249&quot;,&#xd;
+  &quot;PreferredBranch&quot;: &quot;001&quot;,&#xd;
+  &quot;FirstName&quot;: &quot;Akhund&quot;,&#xd;
+  &quot;MiddleName&quot;: &quot;Mohammad&quot;,&#xd;
+  &quot;LastName&quot;: &quot;Essa&quot;,&#xd;
+  &quot;MaritalStatus&quot;: &quot;Single&quot;,&#xd;
+  &quot;DateOfBirth&quot;: &quot;1944-10-06T00:00:00&quot;,&#xd;
+  &quot;DateOfBirth2&quot;: &quot;string&quot;,&#xd;
+  &quot;Email&quot;: &quot;isahmariam31@yahoo.com&quot;,&#xd;
+  &quot;Gender&quot;: &quot;Male&quot;,&#xd;
+  &quot;PhoneNumber&quot;: &quot;08024935749&quot;,&#xd;
+  &quot;MotherMaidenName&quot;: &quot;string&quot;,&#xd;
+  &quot;NextOfKin&quot;: &quot;string&quot;,&#xd;
+  &quot;Nationality&quot;: &quot;Nigeria&quot;,&#xd;
+  &quot;Complete&quot;: &quot;Yes&quot;,&#xd;
+  &quot;Title&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeTitle&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCountry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCity&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMaritalStatus&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeEmail&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr1&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr2&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCntry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeDob&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeFname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeLname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteePhoneNo&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeState&quot;: &quot;string&quot;,&#xd;
+  &quot;City&quot;: &quot;string&quot;,&#xd;
+  &quot;State&quot;: &quot;string&quot;,&#xd;
+  &quot;CifId&quot;: &quot;string&quot;,&#xd;
+  &quot;SchemeCode&quot;: &quot;SB131&quot;,&#xd;
+  &quot;AccountType&quot;: &quot;string&quot;,&#xd;
+  &quot;Channel_Id&quot;: &quot;RIB01&quot;,&#xd;
+  &quot;Ref_Code&quot;: &quot;string&quot;,&#xd;
+  &quot;BirthCert&quot;: &quot;string&quot;,&#xd;
+  &quot;CountryCode&quot;:&quot;234&quot;,&#xd;
+  &quot;ParentPhoto&quot;: &quot;string&quot;,&#xd;
+  &quot;Photo&quot;: &quot;NA&quot;,&#xd;
+  &quot;Signature&quot;: &quot;NA&quot;,&#xd;
+  &quot;Id&quot;: 0,&#xd;
+  &quot;CreatedOn&quot;: &quot;2022-04-07T08:51:05.779Z&quot;,&#xd;
+  &quot;Resident&quot;:&quot;string&quot;,&#xd;
+  &quot;ResidentialAddress&quot;:&quot;string&quot;,&#xd;
+  &quot;StateOfOrigin&quot;:&quot;IKJ&quot;,&#xd;
+  &quot;StateOfResidence&quot;:&quot;LAG&quot;,&#xd;
+  &quot;LevelOfAccount&quot;:null,&#xd;
+  &quot;LgaOfOrigin&quot;:null,&#xd;
+  &quot;LgaOfResidence&quot;:null&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/AccountOpening/CreateAccount?value=123</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AccountOpening/CreateAccount(PEPsList)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;AppId&quot;: &quot;12345&quot;,&#xd;
+  &quot;AppKey&quot;: &quot;123456&quot;,&#xd;
+  &quot;ReferenceNo&quot;: 0,&#xd;
+  &quot;BVNNumber&quot;: &quot;22399170249&quot;,&#xd;
+  &quot;PreferredBranch&quot;: &quot;001&quot;,&#xd;
+  &quot;FirstName&quot;: &quot;Fashola&quot;,&#xd;
+  &quot;MiddleName&quot;: &quot;Raji&quot;,&#xd;
+  &quot;LastName&quot;: &quot;Babatunde&quot;,&#xd;
+  &quot;MaritalStatus&quot;: &quot;Single&quot;,&#xd;
+  &quot;DateOfBirth&quot;: &quot;1992-10-06T00:00:00&quot;,&#xd;
+  &quot;DateOfBirth2&quot;: &quot;string&quot;,&#xd;
+  &quot;Email&quot;: &quot;ajokeoseni233@yahoo.com&quot;,&#xd;
+  &quot;Gender&quot;: &quot;Female&quot;,&#xd;
+  &quot;PhoneNumber&quot;: &quot;09059065931&quot;,&#xd;
+  &quot;MotherMaidenName&quot;: &quot;string&quot;,&#xd;
+  &quot;NextOfKin&quot;: &quot;string&quot;,&#xd;
+  &quot;Nationality&quot;: &quot;Nigeria&quot;,&#xd;
+  &quot;Complete&quot;: &quot;Yes&quot;,&#xd;
+  &quot;Title&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeTitle&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCountry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCity&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMaritalStatus&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeEmail&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr1&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr2&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCntry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeDob&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeFname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeLname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteePhoneNo&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeState&quot;: &quot;string&quot;,&#xd;
+  &quot;City&quot;: &quot;string&quot;,&#xd;
+  &quot;State&quot;: &quot;string&quot;,&#xd;
+  &quot;CifId&quot;: &quot;string&quot;,&#xd;
+  &quot;SchemeCode&quot;: &quot;SB131&quot;,&#xd;
+  &quot;AccountType&quot;: &quot;string&quot;,&#xd;
+  &quot;Channel_Id&quot;: &quot;RIB01&quot;,&#xd;
+  &quot;Ref_Code&quot;: &quot;string&quot;,&#xd;
+  &quot;BirthCert&quot;: &quot;string&quot;,&#xd;
+  &quot;CountryCode&quot;:&quot;234&quot;,&#xd;
+  &quot;ParentPhoto&quot;: &quot;string&quot;,&#xd;
+  &quot;Photo&quot;: &quot;NA&quot;,&#xd;
+  &quot;Signature&quot;: &quot;NA&quot;,&#xd;
+  &quot;Id&quot;: 0,&#xd;
+  &quot;CreatedOn&quot;: &quot;2022-04-07T08:51:05.779Z&quot;,&#xd;
+  &quot;Resident&quot;:&quot;string&quot;,&#xd;
+  &quot;ResidentialAddress&quot;:&quot;string&quot;,&#xd;
+  &quot;StateOfOrigin&quot;:&quot;IKJ&quot;,&#xd;
+  &quot;StateOfResidence&quot;:&quot;LAG&quot;,&#xd;
+  &quot;LevelOfAccount&quot;:null,&#xd;
+  &quot;LgaOfOrigin&quot;:null,&#xd;
+  &quot;LgaOfResidence&quot;:null&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/AccountOpening/CreateAccount?value=123</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AccountOpening/CreateAccount(UNlist)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;AppId&quot;: &quot;12345&quot;,&#xd;
+  &quot;AppKey&quot;: &quot;123456&quot;,&#xd;
+  &quot;ReferenceNo&quot;: 0,&#xd;
+  &quot;BVNNumber&quot;: &quot;21377170249&quot;,&#xd;
+  &quot;PreferredBranch&quot;: &quot;001&quot;,&#xd;
+  &quot;FirstName&quot;: &quot;CHANG&quot;,&#xd;
+  &quot;MiddleName&quot;: &quot;&quot;,&#xd;
+  &quot;LastName&quot;: &quot;CHANG HA&quot;,&#xd;
+  &quot;MaritalStatus&quot;: &quot;Married&quot;,&#xd;
+  &quot;DateOfBirth&quot;: &quot;2006-11-06T00:00:00&quot;,&#xd;
+  &quot;DateOfBirth2&quot;: &quot;string&quot;,&#xd;
+  &quot;Email&quot;: &quot;isahmariam31@yahoo.com&quot;,&#xd;
+  &quot;Gender&quot;: &quot;Male&quot;,&#xd;
+  &quot;PhoneNumber&quot;: &quot;08131000201&quot;,&#xd;
+  &quot;MotherMaidenName&quot;: &quot;string&quot;,&#xd;
+  &quot;NextOfKin&quot;: &quot;string&quot;,&#xd;
+  &quot;Nationality&quot;: &quot;Nigeria&quot;,&#xd;
+  &quot;Complete&quot;: &quot;Yes&quot;,&#xd;
+  &quot;Title&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeTitle&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCountry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCity&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMaritalStatus&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeEmail&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr1&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr2&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCntry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeDob&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeFname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeLname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteePhoneNo&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeState&quot;: &quot;string&quot;,&#xd;
+  &quot;City&quot;: &quot;string&quot;,&#xd;
+  &quot;State&quot;: &quot;string&quot;,&#xd;
+  &quot;CifId&quot;: &quot;string&quot;,&#xd;
+  &quot;SchemeCode&quot;: &quot;SB131&quot;,&#xd;
+  &quot;AccountType&quot;: &quot;string&quot;,&#xd;
+  &quot;Channel_Id&quot;: &quot;RIB01&quot;,&#xd;
+  &quot;Ref_Code&quot;: &quot;string&quot;,&#xd;
+  &quot;BirthCert&quot;: &quot;string&quot;,&#xd;
+  &quot;CountryCode&quot;:&quot;234&quot;,&#xd;
+  &quot;ParentPhoto&quot;: &quot;string&quot;,&#xd;
+  &quot;Photo&quot;: &quot;NA&quot;,&#xd;
+  &quot;Signature&quot;: &quot;NA&quot;,&#xd;
+  &quot;Id&quot;: 0,&#xd;
+  &quot;CreatedOn&quot;: &quot;2022-04-07T08:51:05.779Z&quot;,&#xd;
+  &quot;Resident&quot;:&quot;string&quot;,&#xd;
+  &quot;ResidentialAddress&quot;:&quot;string&quot;,&#xd;
+  &quot;StateOfOrigin&quot;:&quot;IKJ&quot;,&#xd;
+  &quot;StateOfResidence&quot;:&quot;LAG&quot;,&#xd;
+  &quot;LevelOfAccount&quot;:null,&#xd;
+  &quot;LgaOfOrigin&quot;:null,&#xd;
+  &quot;LgaOfResidence&quot;:null&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/AccountOpening/CreateAccount?value=123</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AccountOpening/CreateAccount(Unsanctioned)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;AppId&quot;: &quot;12345&quot;,&#xd;
+  &quot;AppKey&quot;: &quot;123456&quot;,&#xd;
+  &quot;ReferenceNo&quot;: 0,&#xd;
+  &quot;BVNNumber&quot;: &quot;22141869195&quot;,&#xd;
+  &quot;PreferredBranch&quot;: &quot;001&quot;,&#xd;
+  &quot;FirstName&quot;: &quot;Isah&quot;,&#xd;
+  &quot;MiddleName&quot;: &quot;&quot;,&#xd;
+  &quot;LastName&quot;: &quot;Moriam&quot;,&#xd;
+  &quot;MaritalStatus&quot;: &quot;Single&quot;,&#xd;
+  &quot;DateOfBirth&quot;: &quot;1987-12-19T00:00:00&quot;,&#xd;
+  &quot;DateOfBirth2&quot;: &quot;string&quot;,&#xd;
+  &quot;Email&quot;: &quot;moriam.isah@fcmb.com&quot;,&#xd;
+  &quot;Gender&quot;: &quot;Female&quot;,&#xd;
+  &quot;PhoneNumber&quot;: &quot;08056971039&quot;,&#xd;
+  &quot;MotherMaidenName&quot;: &quot;string&quot;,&#xd;
+  &quot;NextOfKin&quot;: &quot;string&quot;,&#xd;
+  &quot;Nationality&quot;: &quot;Nigeria&quot;,&#xd;
+  &quot;Complete&quot;: &quot;Yes&quot;,&#xd;
+  &quot;Title&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeTitle&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCountry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCity&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMaritalStatus&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeEmail&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr1&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeAddr2&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeCntry&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeDob&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeFname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeLname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeMname&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteePhoneNo&quot;: &quot;string&quot;,&#xd;
+  &quot;TrusteeState&quot;: &quot;string&quot;,&#xd;
+  &quot;City&quot;: &quot;string&quot;,&#xd;
+  &quot;State&quot;: &quot;string&quot;,&#xd;
+  &quot;CifId&quot;: &quot;string&quot;,&#xd;
+  &quot;SchemeCode&quot;: &quot;SB131&quot;,&#xd;
+  &quot;AccountType&quot;: &quot;string&quot;,&#xd;
+  &quot;Channel_Id&quot;: &quot;RIB01&quot;,&#xd;
+  &quot;Ref_Code&quot;: &quot;string&quot;,&#xd;
+  &quot;BirthCert&quot;: &quot;string&quot;,&#xd;
+  &quot;CountryCode&quot;:&quot;234&quot;,&#xd;
+  &quot;ParentPhoto&quot;: &quot;string&quot;,&#xd;
+  &quot;Photo&quot;: &quot;NA&quot;,&#xd;
+  &quot;Signature&quot;: &quot;NA&quot;,&#xd;
+  &quot;Id&quot;: 0,&#xd;
+  &quot;CreatedOn&quot;: &quot;2022-04-07T08:51:05.779Z&quot;,&#xd;
+  &quot;Resident&quot;:&quot;string&quot;,&#xd;
+  &quot;ResidentialAddress&quot;:&quot;string&quot;,&#xd;
+  &quot;StateOfOrigin&quot;:&quot;IKJ&quot;,&#xd;
+  &quot;StateOfResidence&quot;:&quot;LAG&quot;,&#xd;
+  &quot;LevelOfAccount&quot;:null,&#xd;
+  &quot;LgaOfOrigin&quot;:null,&#xd;
+  &quot;LgaOfResidence&quot;:null&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/AccountOpening/CreateAccount?value=123</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
